@@ -8,6 +8,27 @@
 
 ---
 
+# 📊 VISUAL REFERENCE GUIDE
+
+This section maps each presentation slide to the specific notebook output to use. Run the notebook cells to generate these visuals, then export/screenshot for your slides.
+
+| Slide # | Slide Title | Notebook Cell | Visual Description | How to Export |
+|---------|-------------|---------------|-------------------|---------------|
+| 4 | Current Churn Landscape | **Cell 7** | Pie chart + Bar chart showing Churned vs Retained | Screenshot both charts |
+| 5 | Customer Type Impact | **Cell 11** | Side-by-side bars: Booking Count + Churn Rate by Customer Type | Screenshot the output |
+| 6 | Loyalty Tier Effect | **Cell 12** | Horizontal bars: Churn Rate by Loyalty Tier (0, 1, 2) | Screenshot the output |
+| 7 | Cancellation Predictor | **Cell 15** | Third bar chart (cancel_flag) from the 3-chart output | Crop the cancellation chart |
+| 8 | Engagement Matters | **Cell 18** | 3x3 grid of distribution histograms by churn status | Screenshot full grid |
+| 9 | Platform & Channel | **Cell 13** + **Cell 14** | Platform churn rates + Marketing channel churn rates | Screenshot both outputs |
+| 10 | Statistical Validation | **Cell 19** + **Cell 21** | T-test results table + Chi-square results table | Format as presentation table |
+| 11 | Predictive Model | **Cell 31** (left chart) | ROC Curves comparing 3 models | Screenshot left subplot |
+| 12 | Feature Importance | **Cell 29** or **Cell 34** | Horizontal bar chart of feature importance | Screenshot the chart |
+| 13 | Risk Segmentation | **Cell 39** | Pie chart (risk categories) + Histogram (probabilities) | Screenshot both charts |
+| 20 | Correlation Matrix | **Cell 20** | Heatmap of feature correlations | Use for appendix |
+| A2 | Confusion Matrices | **Cell 32** | 3 confusion matrices side-by-side | Use for appendix |
+
+---
+
 ## Slide 1: Title Slide
 
 ### Content
@@ -20,6 +41,7 @@
 - Clean, professional layout with Hotels.com branding
 - Subtle background image of a hotel or travel scene
 - Company logo prominently displayed
+- **No notebook visual needed** - use brand template
 
 ### Speaker Notes
 > "Good morning everyone, and thank you for taking the time to join me today. I'm [Name] from the Data Science team, and I'm excited to share some really important findings about our customer retention challenges.
@@ -46,6 +68,7 @@
 ### Visual
 - Simple text layout with key questions highlighted
 - Optional: Icon graphics representing each question (magnifying glass for analysis, crystal ball for prediction, toolkit for solutions)
+- **No notebook visual needed** - use icons/graphics
 
 ### Speaker Notes
 > "So let's start with why we're here. The leadership team rightly identified that we have a churn problem—too many of our customers are making one booking and never coming back. When we define churn as 'no repeat booking within 6 months of checkout,' we're seeing numbers that represent a significant revenue opportunity.
@@ -60,9 +83,9 @@
 
 ### Content
 **Data Analysed:**
-- 689,744 booking records
+- 689,742 booking records
 - ~XXX,XXX unique customers
-- Period: August 2018 – July 2019
+- Period: June 2018 – July 2019
 
 **Methodology:**
 1. Exploratory analysis of all factors
@@ -74,6 +97,7 @@
 - Flowchart showing: Data Collection → EDA → Statistical Testing → Model Building → Insights
 - Small data icons representing volume
 - Timeline graphic for the date range
+- **No notebook visual needed** - create process flowchart
 
 ### Speaker Notes
 > "Let me quickly walk you through how we approached this. We pulled data on nearly 700,000 bookings—that's every booking over about a year's worth of data. For each booking, we have rich information: who the customer is, how they found us, what they did on our website, their loyalty status, whether they cancelled, and crucially, whether they ever came back.
@@ -87,22 +111,25 @@
 ## Slide 4: Current Churn Landscape
 
 ### Content
-**Overall Churn Rate:** XX.X%
+**Overall Churn Rate:** 36.35%
 
 **What This Means:**
-- X in Y customers don't return
-- Represents $XXM in potential lifetime value at risk annually
-- Opportunity for significant improvement
+- 1 in 3 customers don't return
+- Represents significant lifetime value at risk annually
+- Opportunity for meaningful improvement
 
 ### Visual
-- **Large donut/pie chart** showing Churned (red) vs Retained (green) split
-- The churn percentage should be prominently displayed in the centre
-- Animated if possible to draw attention
+📓 **USE NOTEBOOK CELL 7 OUTPUT:**
+- Large pie chart showing Churned (36.4%) vs Retained (63.6%)
+- The churn percentage prominently displayed
+- Green = Retained, Red = Churned
+
+**Export:** Screenshot the LEFT pie chart from Cell 7 output
 
 ### Speaker Notes
-> "Alright, let's look at where we stand. This chart shows our current churn situation, and I want you to focus on that red segment. That represents XX% of our customers who booked with us and then... disappeared. They didn't come back within six months.
+> "Alright, let's look at where we stand. This chart shows our current churn situation, and I want you to focus on that red segment. That represents 36% of our customers who booked with us and then... disappeared. They didn't come back within six months.
 >
-> Now, let me put that in perspective. If we assume an average customer lifetime value of [X], that red segment represents roughly [Y] million pounds in revenue that's walking out the door every year. Every percentage point we can shave off that churn rate translates directly to retained revenue and customer lifetime value.
+> Now, let me put that in perspective. That's more than one in three customers. If we assume an average customer lifetime value of [X pounds], that red segment represents roughly [Y] million pounds in revenue that's walking out the door every year. Every percentage point we can shave off that churn rate translates directly to retained revenue and customer lifetime value.
 >
 > The encouraging thing is that this isn't random. As I'll show you, there are very clear patterns in who churns and why. And if there are patterns, there are solutions."
 
@@ -119,16 +146,18 @@
 **The Insight:** First-time customers are significantly more likely to leave
 
 ### Visual
-- **Side-by-side bar chart** comparing churn rates
-- New customers bar in red/orange (higher churn)
-- Existing customers bar in green (lower churn)
-- Clear labels showing the percentage difference
-- Horizontal dashed line showing overall average
+📓 **USE NOTEBOOK CELL 11 OUTPUT:**
+- Side-by-side horizontal bar charts
+- LEFT: Booking Count by Customer Type
+- RIGHT: Churn Rate by Customer Type (with average line)
+- Red bars = above average churn, Green = below average
+
+**Export:** Screenshot the full 2-panel output from Cell 11
 
 ### Speaker Notes
-> "Now, let me take you through our top findings, starting with the single biggest factor: customer type. Look at this chart. On the left, we have new customers—people making their first-ever booking with Hotels.com. On the right, existing customers—people who've booked with us before.
+> "Now, let me take you through our top findings, starting with the single biggest factor: customer type. Look at this chart. On the left, we have the volume breakdown—how many bookings come from new versus existing customers. On the right, and this is the important part, we have the churn rate for each group.
 >
-> The difference is striking. New customers have a churn rate of around XX%, while existing customers are down at XX%. That's a XX percentage point gap. This tells us something really important: the hardest part of the customer journey is getting someone from their first booking to their second booking.
+> The difference is striking. New customers—people making their first-ever booking with Hotels.com—have a significantly higher churn rate than existing customers. That's a massive gap. This tells us something really important: the hardest part of the customer journey is getting someone from their first booking to their second booking.
 >
 > Think about it like a funnel. We spend a lot of money acquiring new customers—marketing, advertising, promotions. But if we can't convert them to a second booking, that acquisition cost never pays off. The customer who books twice? They're dramatically more likely to become a loyal, long-term customer.
 >
@@ -140,22 +169,25 @@
 
 ### Content
 **Churn Rate by Loyalty Status:**
-- Non-members (Tier 0): ~XX%
-- Base members (Tier 1): ~XX%
-- Silver/Gold (Tier 2): ~XX%
+- Non-members (Tier 0): Highest churn
+- Base members (Tier 1): Medium churn
+- Silver/Gold (Tier 2): Lowest churn
 
 **Key Takeaway:** Each loyalty tier step reduces churn significantly
 
 ### Visual
-- **Descending bar chart** showing churn rate decreasing as loyalty tier increases
-- Colour gradient from red (Tier 0) → yellow (Tier 1) → green (Tier 2)
+📓 **USE NOTEBOOK CELL 12 OUTPUT:**
+- Horizontal bar chart showing churn rate by loyalty tier
+- Tier 0 = highest (red), Tier 2 = lowest (green)
+- Black dashed line = average churn rate
 - Percentage labels on each bar
-- Arrow graphic showing "decreasing churn" direction
+
+**Export:** Screenshot the RIGHT panel (Churn Rate by Loyalty Tier) from Cell 12
 
 ### Speaker Notes
 > "The second major factor is loyalty programme membership, and honestly, this one is really encouraging because it validates that our loyalty programme works.
 >
-> Look at these three bars. Non-members—customers who haven't signed up for our loyalty programme—have the highest churn rate at XX%. Base members drop to XX%. And our Silver and Gold members? Down to just XX%.
+> Look at these three bars. Non-members—customers who haven't signed up for our loyalty programme—have the highest churn rate. That's the red bar at the top. Base members drop considerably. And our Silver and Gold members? They're down at the bottom with the lowest churn.
 >
 > That's not a coincidence. What this tells us is that loyalty programme membership genuinely creates stickiness. When customers accumulate points, earn rewards, and feel recognised, they come back.
 >
@@ -169,21 +201,24 @@
 
 ### Content
 **The Data:**
-- Customers who cancelled a booking: ~XX% churn
-- Customers who never cancelled: ~XX% churn
+- Customers who cancelled a booking: Higher churn
+- Customers who never cancelled: Lower churn
 
 **Insight:** Cancellation is a strong predictor of future churn—and an intervention opportunity
 
 ### Visual
-- **Two-bar comparison chart** with stark contrast
-- Non-cancellers in green, cancellers in red
-- Consider adding a "warning sign" icon next to the cancellation bar
-- Show the percentage point difference prominently
+📓 **USE NOTEBOOK CELL 15 OUTPUT (THIRD CHART):**
+- The rightmost bar chart showing "Churn Rate by Cancellation"
+- Two bars: No (0) vs Yes (1)
+- Clear colour contrast (green vs red)
+- Percentage labels on each bar
+
+**Export:** Screenshot or crop the THIRD bar chart (Cancellation) from Cell 15's 3-panel output
 
 ### Speaker Notes
 > "Now this third finding is perhaps the most immediately actionable. Look at the difference between customers who have cancelled a booking versus those who haven't.
 >
-> Customers who cancel are nearly twice as likely to churn completely. Now, why might that be? Well, cancellation often signals something went wrong—maybe they found a better deal elsewhere, maybe their plans changed and we didn't make rebooking easy enough, maybe they were dissatisfied with something in the booking process.
+> Customers who cancel are significantly more likely to churn completely. Now, why might that be? Well, cancellation often signals something went wrong—maybe they found a better deal elsewhere, maybe their plans changed and we didn't make rebooking easy enough, maybe they were dissatisfied with something in the booking process.
 >
 > But here's the opportunity: cancellation is an observable event. It happens in our system, we know exactly when it happens, and we know who it happens to. That means cancellation is an early warning signal we can actually act on.
 >
@@ -194,27 +229,31 @@
 ## Slide 8: Key Finding #4 – Engagement Predicts Retention
 
 ### Content
-**Low Engagement = High Churn:**
+**Low Engagement = Higher Churn:**
 - Fewer pages viewed
 - Less time on website
 - Fewer destinations searched
 - Higher bounce rates
 
-**High Engagement = Low Churn:**
+**High Engagement = Lower Churn:**
 - More property pages viewed
-- Longer browsing sessions
-- Multiple destinations explored
+- Longer visit duration
+- More search activity
 
 ### Visual
-- **Split comparison graphic** or **two-column layout**
-- Left side (red-tinted): "Low Engagement" with down arrows and metrics
-- Right side (green-tinted): "High Engagement" with up arrows and metrics
-- Or: Scatter plot showing engagement metric vs churn rate with trend line
+📓 **USE NOTEBOOK CELL 18 OUTPUT:**
+- 3x3 grid of histograms showing feature distributions
+- Each histogram overlays Churned (red) vs Retained (green)
+- Key metrics: total_visit_minutes, total_visit_pages, property_pages_count
+
+**Export:** Screenshot the full 3x3 grid from Cell 18, or select 3-4 key histograms
 
 ### Speaker Notes
 > "The fourth pattern relates to how customers interact with our website before and during booking. And this one is intuitive but important to quantify.
 >
-> Customers who churn tend to have what I'd call 'shallow' engagement with our platform. They spend less time browsing, they look at fewer properties, they don't explore multiple destinations. It's almost like they're just transacting rather than genuinely engaging with Hotels.com as a platform.
+> These histograms show the distribution of various engagement metrics, split by whether customers churned or not. The green shows retained customers, red shows churned customers.
+>
+> What you can see is that customers who churn tend to have what I'd call 'shallow' engagement with our platform. They spend less time browsing, they look at fewer properties, they don't explore multiple destinations. It's almost like they're just transacting rather than genuinely engaging with Hotels.com as a platform.
 >
 > In contrast, customers who return tend to have 'deep' engagement. They browse extensively, compare properties, look at different destinations. They're investing time in our platform, which suggests they see us as their go-to resource for hotel bookings.
 >
@@ -236,17 +275,19 @@
 - Affiliates/Meta: Higher churn
 
 ### Visual
-- **Grouped bar chart** showing churn rate by platform (top)
-- **Grouped bar chart** showing churn rate by channel (bottom)
-- Colour-coded by churn level (green to red gradient)
-- Include sample sizes to show reliability
+📓 **USE NOTEBOOK CELL 13 + CELL 14 OUTPUTS:**
+- **Cell 13:** Platform churn rates (App, Desktop, MWeb, Offline, Other)
+- **Cell 14:** Marketing channel churn rates (Direct, Meta, Affiliates, CRM, SEM, etc.)
+- Both show horizontal bars with churn rates and average line
+
+**Export:** Screenshot both outputs and place side-by-side or stacked
 
 ### Speaker Notes
 > "We also looked at platform and acquisition channel effects. A couple of interesting patterns here.
 >
-> On platform: customers who book through our app have noticeably lower churn than desktop or mobile web users. Why? Probably because downloading and using the app represents a higher level of commitment. These customers have literally given us space on their phone—they're invested in using Hotels.com.
+> On platform: look at this first chart. Customers who book through our app have noticeably lower churn than desktop or mobile web users. Why? Probably because downloading and using the app represents a higher level of commitment. These customers have literally given us space on their phone—they're invested in using Hotels.com.
 >
-> On marketing channels: customers who come to us directly—typing hotels.com into their browser—have lower churn than those we acquire through paid channels or affiliates. That makes sense too. Direct visitors already know us and chose us; paid acquisition customers might be more price-sensitive or less brand-loyal.
+> On marketing channels: this second chart shows churn by how customers found us. Customers who come to us directly—typing hotels.com into their browser—have lower churn than those we acquire through paid channels or affiliates. That makes sense too. Direct visitors already know us and chose us; paid acquisition customers might be more price-sensitive or less brand-loyal.
 >
 > Now, I'm not saying we should stop paid acquisition—it's essential for growth. But we should recognise that customers from different channels may need different retention approaches. And driving app adoption could be a meaningful retention lever."
 
@@ -257,19 +298,22 @@
 ### Content
 **All Key Findings Are Statistically Significant (p < 0.001)**
 
-| Factor | Chi-Square | Effect Size |
-|--------|-----------|-------------|
-| Customer Type | Very High | Large |
-| Loyalty Tier | Very High | Large |
-| Cancellation | Very High | Medium-Large |
-| Platform | High | Medium |
-| Marketing Channel | High | Medium |
+| Factor | Test Type | Significance | Effect Size |
+|--------|-----------|--------------|-------------|
+| Customer Type | Chi-Square | *** | Large |
+| Loyalty Tier | Chi-Square | *** | Large |
+| Cancellation | Chi-Square | *** | Medium-Large |
+| Platform | Chi-Square | *** | Medium |
+| Marketing Channel | Chi-Square | *** | Medium |
+| Engagement Metrics | T-Test | *** | Varies |
 
 ### Visual
-- **Summary table** with significance indicators
-- Use stars (***) or checkmarks to indicate significance levels
-- Consider a simple bar showing effect size comparison
-- Green checkmarks for validated factors
+📓 **USE NOTEBOOK CELL 19 (T-tests) + CELL 21 (Chi-Square) OUTPUTS:**
+- Tables showing statistical test results
+- Significance levels (*** = p < 0.001)
+- Effect sizes (Cramér's V for categorical)
+
+**Export:** Format the key rows from both outputs into a clean presentation table
 
 ### Speaker Notes
 > "Now, I know some of you might be thinking: are these patterns real, or could they be statistical noise? Great question, and it's exactly why we ran rigorous significance tests on every factor.
@@ -296,20 +340,22 @@
 **Selected:** Random Forest for deployment
 
 ### Visual
-- **ROC curve plot** showing all three models overlaid
-- Random Forest curve highlighted/thicker
-- Diagonal reference line for "random chance"
-- AUC values in legend
-- Clear visual showing RF as the winner
+📓 **USE NOTEBOOK CELL 31 OUTPUT (LEFT SUBPLOT):**
+- ROC curve plot with all 3 models overlaid
+- Random Forest curve should be highest/best
+- Diagonal dashed line = random chance baseline
+- Legend shows AUC values for each model
+
+**Export:** Screenshot the LEFT plot (ROC Curves) from Cell 31's 2-panel output
 
 ### Speaker Notes
 > "To operationalise these insights, we built machine learning models that can score individual customers based on their likelihood to churn. We tested three different approaches.
 >
 > Logistic Regression is the most interpretable—it gives us nice, clean odds ratios that tell us exactly how each factor affects churn probability. Random Forest is an ensemble method that captures complex patterns and interactions. Gradient Boosting is another ensemble approach known for strong predictive performance.
 >
-> This chart shows the ROC curves—without getting too technical, the closer to the top-left corner, the better. Random Forest came out on top with an AUC of about 0.76. What does that mean in practical terms? If I show the model two customers—one who will churn and one who won't—it will correctly identify which is which about 76% of the time.
+> This chart shows the ROC curves—without getting too technical, the closer to the top-left corner, the better. The diagonal line represents random guessing. You can see all three models are well above that line, with Random Forest coming out on top with an AUC of about 0.76.
 >
-> That's good enough to drive real business value. It means we can score our customer base and identify who's at risk before they leave."
+> What does that mean in practical terms? If I show the model two customers—one who will churn and one who won't—it will correctly identify which is which about 76% of the time. That's good enough to drive real business value. It means we can score our customer base and identify who's at risk before they leave."
 
 ---
 
@@ -329,11 +375,13 @@
 10. Marketing Channel
 
 ### Visual
-- **Horizontal bar chart** showing feature importance scores
-- Bars sorted descending by importance
-- Top 3-4 bars highlighted or in different colour
-- Importance values labelled on each bar
-- Clear title: "What Matters Most for Predicting Churn"
+📓 **USE NOTEBOOK CELL 29 OR CELL 34 OUTPUT:**
+- **Cell 29:** Random Forest feature importance (single model)
+- **Cell 34:** Combined importance across all 3 models (more comprehensive)
+- Horizontal bar chart, sorted by importance
+- Top features at the top
+
+**Export:** Screenshot Cell 29 (cleaner) or Cell 34 (shows agreement across models)
 
 ### Speaker Notes
 > "This chart shows what's driving the model's predictions—which factors carry the most weight. And reassuringly, it aligns with everything we've discussed.
@@ -359,15 +407,16 @@
 | 🔴 Critical Risk | XX% | ~XX% |
 
 ### Visual
-- **Stacked bar or pie chart** showing customer distribution by risk category
-- Colour-coded: Green → Yellow → Orange → Red
-- Side panel showing actual churn rate for each segment
-- Visual emphasis on High/Critical risk segments
+📓 **USE NOTEBOOK CELL 39 OUTPUT:**
+- **LEFT:** Pie chart showing customer distribution by risk category (Green/Yellow/Orange/Red)
+- **RIGHT:** Histogram of churn probabilities with 0.5 threshold line
+
+**Export:** Screenshot both charts from Cell 39's 2-panel output
 
 ### Speaker Notes
 > "Using our model, we've scored every customer and grouped them into four risk categories. Let me show you how this works.
 >
-> Low Risk customers—shown in green—have a churn probability under 30%. These are our healthiest customers. They tend to be existing, loyal members who engage deeply with our platform.
+> This pie chart on the left shows how our customer base breaks down by risk level. Low Risk customers—shown in green—have a churn probability under 30%. These are our healthiest customers. They tend to be existing, loyal members who engage deeply with our platform.
 >
 > Medium Risk—in yellow—have probabilities between 30% and 50%. They need monitoring but aren't urgent.
 >
@@ -375,7 +424,7 @@
 >
 > And Critical Risk—in red—are above 70%. These customers are almost certainly going to leave unless we intervene.
 >
-> Look at how the actual churn rates validate the model. Low Risk customers really do have low churn. Critical Risk customers really do have very high churn. The model is working.
+> The histogram on the right shows the full distribution of probabilities. That red dashed line at 0.5 is our decision threshold.
 >
 > This segmentation lets us allocate our retention resources efficiently. Rather than treating everyone the same, we can focus our efforts where they'll have the greatest impact."
 
@@ -397,10 +446,11 @@
 **Expected Impact:** ⭐⭐⭐ HIGH
 
 ### Visual
-- **Customer journey flowchart** showing touchpoints:
+- Customer journey flowchart showing touchpoints:
   First Booking → Welcome Email → Stay → Feedback Request → Rebooking Incentive → Second Booking
 - Icons for each touchpoint
 - Timeline below showing when each interaction happens
+- **No notebook visual** - create custom flowchart/infographic
 
 ### Speaker Notes
 > "Alright, let's talk solutions. I have five recommendations, and I'll start with the one addressing our biggest churn driver: new customer attrition.
@@ -432,10 +482,11 @@
 **Expected Impact:** ⭐⭐⭐ HIGH
 
 ### Visual
-- **Loyalty tier ladder graphic** showing progression
+- Loyalty tier ladder graphic showing progression path
 - Arrows indicating "acceleration" opportunities
 - Before/after comparison of tier thresholds
 - Icons for each reward type
+- **No notebook visual** - create custom loyalty ladder infographic
 
 ### Speaker Notes
 > "The second recommendation focuses on our loyalty programme, which we know is highly protective against churn.
@@ -467,10 +518,11 @@
 **Expected Impact:** ⭐⭐⭐ HIGH
 
 ### Visual
-- **Timeline/flowchart** showing:
+- Timeline/flowchart showing:
   Cancellation Event → 4-6 hours → Automated Email + Survey → Day 3 → Reminder → Day 7 → Final Offer
 - Decision tree showing escalation for high-value customers
 - Sample email mockup if available
+- **No notebook visual** - create custom intervention timeline
 
 ### Speaker Notes
 > "Third recommendation: we need to get much better at handling cancellations. Right now, when a customer cancels, we process it and... that's it. They're gone. But we know cancellation is a strong predictor of churn—so this is exactly when we should be engaging, not disengaging.
@@ -504,10 +556,11 @@
 **Expected Impact:** ⭐⭐ MEDIUM
 
 ### Visual
-- **Before/after UX mockups** showing engagement improvements
+- Before/after UX mockups showing engagement improvements
 - Email template example with personalised recommendations
 - Push notification example
 - Engagement funnel showing dropout points
+- **No notebook visual** - create mockups/wireframes
 
 ### Speaker Notes
 > "Fourth recommendation addresses the engagement gap. We know that customers who engage deeply with our platform—browsing lots of properties, spending time researching—are more likely to return. So how do we help customers engage more?
@@ -539,10 +592,11 @@
 **Expected Impact:** ⭐⭐⭐ HIGH (Enabler for all other initiatives)
 
 ### Visual
-- **System architecture diagram** showing:
+- System architecture diagram showing:
   Data Sources → ML Model → Risk Scores → CRM/Marketing Automation → Campaigns
 - Dashboard mockup showing risk distribution
 - Alert notification examples for high-risk customers
+- **No notebook visual** - create system architecture diagram
 
 ### Speaker Notes
 > "My fifth and final recommendation is about operationalising everything we've discussed. We've built a model that can predict churn—but it only creates value if we actually use it.
@@ -576,11 +630,12 @@
 - Continuous optimisation based on results
 
 ### Visual
-- **Gantt chart or timeline** showing three phases
-- Key milestones marked with diamonds
+- Gantt chart or timeline showing three phases
+- Key milestones marked with diamonds/circles
 - Colour-coded by initiative
 - "We Are Here" marker at start
 - Clear delivery dates for each initiative
+- **No notebook visual** - create Gantt chart/timeline graphic
 
 ### Speaker Notes
 > "So how do we actually make this happen? Here's a realistic roadmap.
@@ -602,7 +657,7 @@
 
 | Metric | Current | Target | Improvement |
 |--------|---------|--------|-------------|
-| Overall Churn Rate | XX% | XX% | -X pp |
+| Overall Churn Rate | 36.4% | ~32% | -4 pp |
 | New Customer Retention | XX% | XX% | +X pp |
 | Loyalty Programme Enrolment | XX% | XX% | +X pp |
 
@@ -612,17 +667,18 @@
 - Projected ROI: X:1 to X:1
 
 ### Visual
-- **Waterfall chart** showing current churn → interventions → target churn
+- Waterfall chart showing: Current Churn → Each Initiative's Impact → Target Churn
 - ROI calculation graphic
 - Confidence range bars on projections
 - Clear "bottom line" number highlighted
+- **No notebook visual** - create waterfall/impact chart
 
 ### Speaker Notes
 > "Now, what does all this mean for the business? Let me walk you through our projections—and I want to be clear, these are conservative estimates.
 >
-> If we successfully implement these initiatives, we project we can reduce our overall churn rate by X percentage points within twelve months. For new customer retention specifically, we're targeting an improvement of X points.
+> If we successfully implement these initiatives, we project we can reduce our overall churn rate by approximately 4 percentage points within twelve months—from about 36% down to around 32%. For new customer retention specifically, we're targeting an even larger improvement.
 >
-> What does that translate to in pounds and pence? Based on our customer lifetime value calculations, reducing churn by X points means retaining roughly X thousand additional customers per year. At an average LTV of £X, that's £X million in incremental revenue.
+> What does that translate to in pounds and pence? Based on our customer lifetime value calculations, reducing churn by 4 points means retaining roughly X thousand additional customers per year. At an average LTV of £X, that's £X million in incremental revenue.
 >
 > Against an investment of approximately £XXX thousand for technology, campaigns, and incentives, we're looking at an ROI in the range of X to 1.
 >
@@ -649,9 +705,10 @@
 
 ### Visual
 - Clean summary layout with checkmarks
-- Clear "Ask" section highlighted
+- Clear "Ask" section highlighted in a box
 - Contact information
 - "Questions?" prompt with discussion visual
+- **No notebook visual** - use clean summary layout
 
 ### Speaker Notes
 > "So let me bring this all together.
@@ -677,29 +734,63 @@
 - Feature engineering details
 - Model selection criteria
 - Cross-validation approach
+- **No specific visual needed**
 
 ### A2: Full Model Performance Metrics
-- Complete classification reports
-- Precision-recall curves
-- Calibration plots
-- Learning curves
 
-### A3: Statistical Test Details
-- Chi-square test results with full values
-- T-test results for numerical variables
-- Effect size calculations
-- Multiple comparison corrections
+📓 **USE NOTEBOOK CELL 31 (RIGHT) + CELL 32 OUTPUTS:**
+- **Cell 31 (right):** Bar chart comparing Accuracy, Precision, Recall, F1, ROC-AUC across models
+- **Cell 32:** Three confusion matrices side-by-side
 
-### A4: Data Dictionary
+**Export:** Screenshot both outputs for appendix reference
+
+### A3: Correlation Analysis
+
+📓 **USE NOTEBOOK CELL 20 OUTPUT:**
+- Correlation heatmap showing relationships between all features
+- Triangular matrix with correlation coefficients
+- Red/Blue colour scale
+
+**Export:** Screenshot the correlation heatmap from Cell 20
+
+### A4: Logistic Regression Coefficients
+
+📓 **USE NOTEBOOK CELL 27 OUTPUT:**
+- Horizontal bar chart of logistic regression coefficients
+- Red = positive (increases churn), Green = negative (decreases churn)
+- Shows interpretable odds ratios
+
+**Export:** Screenshot the coefficient bar chart from Cell 27
+
+### A5: Data Dictionary
 - Complete field definitions
 - Value coding explanations
 - Data quality notes
 - Sample size by segment
+- **No notebook visual needed**
 
-### A5: Sensitivity Analysis
-- Impact of different churn definitions
-- Model stability across time periods
-- Feature importance consistency
+---
+
+## Quick Reference: Notebook Cell → Slide Mapping
+
+| Cell # | Output Type | Use For Slide(s) |
+|--------|-------------|------------------|
+| 7 | Pie + Bar (Churn Distribution) | Slide 4 |
+| 11 | 2-panel bar charts (Customer Type) | Slide 5 |
+| 12 | 2-panel bar charts (Loyalty Tier) | Slide 6 |
+| 13 | 2-panel bar charts (Platform) | Slide 9 |
+| 14 | 2-panel bar charts (Marketing Channel) | Slide 9 |
+| 15 | 3 bar charts (Binary Flags) | Slide 7 (use Cancel chart) |
+| 18 | 3x3 histogram grid | Slide 8 |
+| 19 | T-test results table | Slide 10 |
+| 20 | Correlation heatmap | Appendix A3 |
+| 21 | Chi-square results table | Slide 10 |
+| 27 | LR coefficients bar chart | Appendix A4 |
+| 29 | RF feature importance | Slide 12 |
+| 31 | ROC curves + metrics comparison | Slide 11 |
+| 32 | 3 confusion matrices | Appendix A2 |
+| 34 | Combined feature importance | Slide 12 (alternative) |
+| 39 | Risk pie + probability histogram | Slide 13 |
 
 ---
 
