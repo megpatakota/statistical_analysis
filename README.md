@@ -17,12 +17,49 @@ Hotels.com has observed a high rate of customers churning (failing to rebook wit
 statistical_analysis/
 ├── README.md                           # This file
 ├── presentation.md                     # Presentation slides with speaker notes
-├── test.ipynb                          # Main analysis notebook
+│
+├── # JUPYTER NOTEBOOK (Interactive Analysis)
+├── test.ipynb                          # Main interactive analysis notebook
+│
+├── # PYTHON MODULES (Modular Code)
+├── main.py                             # 🚀 Main script - runs full analysis
+├── config.py                           # Configuration & unified colour scheme
+├── data_loader.py                      # Data loading & preprocessing functions
+├── visualizations.py                   # All visualization functions
+├── statistical_tests.py                # Statistical significance testing
+├── models.py                           # ML model training & evaluation
+│
+├── # DATA & DOCUMENTATION
 ├── PIP_case_study_data.csv            # Source data (booking-level)
 ├── Case Study - Statistical modelling.pdf  # Original case study brief
 ├── pyproject.toml                      # Project dependencies
 └── poetry.lock                         # Locked dependencies
 ```
+
+## Running the Analysis
+
+### Option 1: Python Script (Recommended for Production)
+```bash
+python main.py
+```
+This runs the complete analysis pipeline and generates all visualizations.
+
+### Option 2: Jupyter Notebook (Interactive Exploration)
+```bash
+jupyter notebook test.ipynb
+```
+Use this for interactive exploration and step-by-step analysis.
+
+## Module Descriptions
+
+| Module | Description |
+|--------|-------------|
+| `config.py` | Unified colour scheme (COLORS dict), plot settings, column definitions |
+| `data_loader.py` | `load_data()`, `preprocess_data()`, `aggregate_to_customer_level()` |
+| `visualizations.py` | All plot functions: `plot_churn_distribution()`, `plot_churn_by_category()`, etc. |
+| `statistical_tests.py` | `perform_ttest()`, `perform_chi_square_tests()` |
+| `models.py` | `train_logistic_regression()`, `train_random_forest()`, `score_customers()` |
+| `main.py` | Orchestrates the full pipeline in 7 steps |
 
 ## Data Description
 
